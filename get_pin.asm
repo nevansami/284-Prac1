@@ -37,17 +37,29 @@ get_pin:
   mov ecx, input
   mov edx, 100
   int 0x80
+  xor eax, eax
 ;print the value in 
 
 ; Convert the pin to an integer
 ; 
-  mov ecx, input
+  mov esi, input
+string_to_int:
+  movzx ecx, byte [esi]
+  cmp ecx, 10
+  jz done
   sub ecx, '0'
-  mov eax, ecx
-  int 0x80
+  imul eax, eax, 10
+  add eax, ecx
+  inc esi
+  jmp string_to_int
 ; Store the integer in eax
   ;mov eax, 0 ; This can be deleted, it just keeps function from causing a runtime error until completed
-
+done:
+  ;mov [input], eax
+  ;mov rax, [input]
+  ;mov eax, 1
+  ;xor ebx, ebx
+  ;int 0x80
   mov eax, 1
   xor ebx, ebx
   int 0x80
