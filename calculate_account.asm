@@ -18,7 +18,9 @@ calculate_account:
 ; Do not modify anything above this line unless you know what you are doing
 ; ==========================
 ; Your code goes here
-  mov eax, 0 ; This can be deleted, it just keeps function from causing a runtime error until completed
+  mov eax, dword [rdi]
+  add eax, 10000
+  mov rax, rax
 ; ==========================
 ; Do not modify anything below this line unless you know what you are doing
 
