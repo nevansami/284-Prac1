@@ -1,0 +1,31 @@
+     1                                 %line 1+1 calculate_account.asm
+     2                                 [global calculate_account]
+     3                                 
+     4                                 [section .data]
+     5                                 
+     6                                 
+     7                                 
+     8                                 
+     9                                 
+    10                                 [section .text]
+    11                                 
+    12                                 
+    13                                 
+    14                                 
+    15                                 calculate_account:
+    16 00000000 55                      push rbp
+    17 00000001 4889E5                  mov rbp, rsp
+    18                                 
+    19                                 
+    20                                 
+    21                                 
+    22 00000004 4831C0                  xor rax, rax
+    23 00000007 BA44190000              mov edx, 6468
+    24 0000000C 89D0                    mov eax, edx
+    25 0000000E 480510270000            add rax, 10000
+    26 00000014 4889C0                  mov rax, rax
+    27                                 
+    28                                 
+    29                                 
+    30 00000017 C9                      leave
+    31 00000018 C3                      ret
