@@ -4,7 +4,7 @@ global greeting
 section .data
 ; ==========================
 ; Your data goes here
-  output db "Hello world", 0xa
+  output db "Welcome to the bank of <<Redacted>>", 0xa
   length equ $ - output
 
 ; ==========================
