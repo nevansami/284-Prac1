@@ -1,0 +1,40 @@
+     1                                 %line 1+1 calculate_balance.asm
+     2                                 
+     3                                 [global calculate_balance]
+     4                                 
+     5                                 [section .data]
+     6                                 
+     7                                 
+     8                                 [section .bss]
+     9 00000000 <gap>                   account resb 10
+    10                                 
+    11                                 
+    12                                 [section .text]
+    13                                 
+    14                                 
+    15                                 
+    16                                 
+    17                                 
+    18                                 
+    19                                 calculate_balance:
+    20 00000000 55                      push rbp
+    21 00000001 4889E5                  mov rbp, rsp
+    22                                 
+    23                                 
+    24                                 
+    25 00000004 48C7C77F410000          mov rdi, 16767
+    26 0000000B 48C7C66F1A0000          mov rsi, 6767
+    27 00000012 48893C25[00000000]      mov [account], rdi
+    28 0000001A 488B0425[00000000]      mov rax, [account]
+    29 00000022 4801F7                  add rdi, rsi
+    30 00000025 480FAFFE                imul rdi, rsi
+    31 00000029 4831F0                  xor rax, rsi
+    32 0000002C 4821F8                  and rax, rdi
+    33                                 
+    34                                 
+    35 0000002F B801000000              mov eax, 1
+    36 00000034 CD80                    int 0x80
+    37                                 
+    38                                 
+    39 00000036 C9                      leave
+    40 00000037 C3                      ret
