@@ -42,15 +42,15 @@ get_pin:
 
 ; Convert the pin to an integer
 ; 
-  mov esi, input
+  mov esi, input ;;this is the counter
 string_to_int:
-  movzx ecx, byte [esi]
-  cmp ecx, 10
+  movzx ecx, byte [esi] ;store current character into register
+  cmp ecx, 10 ;if char == "\n", then stop loop
   jz done
-  sub ecx, '0'
+  sub ecx, '0' ;;convert ASCII to integer
   imul eax, eax, 10
   add eax, ecx
-  inc esi
+  inc esi ;;increment counter
   jmp string_to_int
 ; Store the integer in eax
   ;mov eax, 0 ; This can be deleted, it just keeps function from causing a runtime error until completed
