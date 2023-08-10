@@ -18,9 +18,9 @@ calculate_account:
 ; Do not modify anything above this line unless you know what you are doing
 ; ==========================
 ; Your code goes here
-  mov eax, dword [rdi]
-  add eax, 10000
-  mov rax, rax
+  mov eax, dword [rdi] ; load 32bit integer pin
+  add eax, 10000 ; adding 10000 to pin for acc number
+  mov rax, rax ; moving acc number to rax
 ; ==========================
 ; Do not modify anything below this line unless you know what you are doing
 
