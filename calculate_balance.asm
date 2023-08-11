@@ -4,6 +4,7 @@ global calculate_balance
 section .data
 ; ==========================
 ; Your data goes here
+  num dw 50000
 section .bss
   account resb 10
 ; ==========================
@@ -28,8 +29,12 @@ calculate_balance:
   add rdi, rsi ;A = A + P
   imul rdi, rsi ;(A + P)*P
   xor rax, rsi ; A = A xor P
-  and rax, rdi ; rax stores final result of computation
-
+  and rax, rdi ; rax stores result of first computation
+  mov [account], rax
+  mov rdx, 0
+  idiv qword [num]
+  add rdx, 50000
+  mov rax, rdx
 
   mov eax, 1 ; This can be deleted, it just keeps function from causing a runtime error until completed
   int 0x80

@@ -5,36 +5,41 @@
      5                                 [section .data]
      6                                 
      7                                 
-     8                                 [section .bss]
-     9 00000000 <gap>                   account resb 10
-    10                                 
+     8 00000000 50C3                    num dw 50000
+     9                                 [section .bss]
+    10 00000000 <gap>                   account resb 10
     11                                 
-    12                                 [section .text]
-    13                                 
+    12                                 
+    13                                 [section .text]
     14                                 
     15                                 
     16                                 
     17                                 
     18                                 
-    19                                 calculate_balance:
-    20 00000000 55                      push rbp
-    21 00000001 4889E5                  mov rbp, rsp
-    22                                 
+    19                                 
+    20                                 calculate_balance:
+    21 00000000 55                      push rbp
+    22 00000001 4889E5                  mov rbp, rsp
     23                                 
     24                                 
-    25 00000004 48C7C77F410000          mov rdi, 16767
-    26 0000000B 48C7C66F1A0000          mov rsi, 6767
-    27 00000012 48893C25[00000000]      mov [account], rdi
-    28 0000001A 488B0425[00000000]      mov rax, [account]
-    29 00000022 4801F7                  add rdi, rsi
-    30 00000025 480FAFFE                imul rdi, rsi
-    31 00000029 4831F0                  xor rax, rsi
-    32 0000002C 4821F8                  and rax, rdi
-    33                                 
-    34                                 
-    35 0000002F B801000000              mov eax, 1
-    36 00000034 CD80                    int 0x80
-    37                                 
-    38                                 
-    39 00000036 C9                      leave
-    40 00000037 C3                      ret
+    25                                 
+    26 00000004 48C7C77F410000          mov rdi, 16767
+    27 0000000B 48C7C66F1A0000          mov rsi, 6767
+    28 00000012 48893C25[00000000]      mov [account], rdi
+    29 0000001A 488B0425[00000000]      mov rax, [account]
+    30 00000022 4801F7                  add rdi, rsi
+    31 00000025 480FAFFE                imul rdi, rsi
+    32 00000029 4831F0                  xor rax, rsi
+    33 0000002C 4821F8                  and rax, rdi
+    34 0000002F 48890425[00000000]      mov [account], rax
+    35 00000037 48C7C200000000          mov rdx, 0
+    36 0000003E 48F73C25[00000000]      idiv qword [num]
+    37 00000046 4881C250C30000          add rdx, 50000
+    38 0000004D 4889D0                  mov rax, rdx
+    39                                 
+    40 00000050 B801000000              mov eax, 1
+    41 00000055 CD80                    int 0x80
+    42                                 
+    43                                 
+    44 00000057 C9                      leave
+    45 00000058 C3                      ret
