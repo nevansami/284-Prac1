@@ -24,9 +24,8 @@ greeting:
   mov edx, length
   int 0x80
 
-  mov eax, 1
+  xor eax, eax
   xor ebx, ebx
-  int 0x80
 ; ==========================
 ; Do not modify anything below this line unless you know what you are doing
   leave

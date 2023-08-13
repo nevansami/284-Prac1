@@ -22,8 +22,8 @@ calculate_balance:
 ; Do not modify anything above this line unless you know what you are doing
 ; ==========================
 ; Your code goes here
-  mov rdi, 16767
-  mov rsi, 6767 ;pretend as if the two registers have the passed in values. this is to be changed later
+  ;mov rdi, 16767
+  ;mov rsi, 6767 ;pretend as if the two registers have the passed in values. this is to be changed later
   mov [account], rdi
   mov rax, [account] ; store a copy of rdi in rax
   add rdi, rsi ;A = A + P
@@ -36,8 +36,8 @@ calculate_balance:
   add rdx, 50000
   mov rax, rdx
 
-  mov eax, 1 ; This can be deleted, it just keeps function from causing a runtime error until completed
-  int 0x80
+  ;mov eax, 1 ; This can be deleted, it just keeps function from causing a runtime error until completed
+  ;int 0x80
 ; ==========================
 ; Do not modify anything below this line unless you know what you are doing
   leave

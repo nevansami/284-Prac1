@@ -23,23 +23,23 @@
     23                                 
     24                                 
     25                                 
-    26 00000004 48C7C77F410000          mov rdi, 16767
-    27 0000000B 48C7C66F1A0000          mov rsi, 6767
-    28 00000012 48893C25[00000000]      mov [account], rdi
-    29 0000001A 488B0425[00000000]      mov rax, [account]
-    30 00000022 4801F7                  add rdi, rsi
-    31 00000025 480FAFFE                imul rdi, rsi
-    32 00000029 4831F0                  xor rax, rsi
-    33 0000002C 4821F8                  and rax, rdi
-    34 0000002F 48890425[00000000]      mov [account], rax
-    35 00000037 48C7C200000000          mov rdx, 0
-    36 0000003E 48F73C25[00000000]      idiv qword [num]
-    37 00000046 4881C250C30000          add rdx, 50000
-    38 0000004D 4889D0                  mov rax, rdx
+    26                                 
+    27                                 
+    28 00000004 48893C25[00000000]      mov [account], rdi
+    29 0000000C 488B0425[00000000]      mov rax, [account]
+    30 00000014 4801F7                  add rdi, rsi
+    31 00000017 480FAFFE                imul rdi, rsi
+    32 0000001B 4831F0                  xor rax, rsi
+    33 0000001E 4821F8                  and rax, rdi
+    34 00000021 48890425[00000000]      mov [account], rax
+    35 00000029 48C7C200000000          mov rdx, 0
+    36 00000030 48F73C25[00000000]      idiv qword [num]
+    37 00000038 4881C250C30000          add rdx, 50000
+    38 0000003F 4889D0                  mov rax, rdx
     39                                 
-    40 00000050 B801000000              mov eax, 1
-    41 00000055 CD80                    int 0x80
+    40                                 
+    41                                 
     42                                 
     43                                 
-    44 00000057 C9                      leave
-    45 00000058 C3                      ret
+    44 00000042 C9                      leave
+    45 00000043 C3                      ret

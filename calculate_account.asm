@@ -23,8 +23,8 @@ calculate_account:
   mov eax, edx ; load 32bit integer pin
   add rax, 10000 ; adding 10000 to pin for acc number
 
-  mov eax, 1
-  int 0x80
+  ;mov eax, 1
+  ;int 0x80
   ;mov rax, rax ; moving acc number to rax
 ; ==========================
 ; Do not modify anything below this line unless you know what you are doing

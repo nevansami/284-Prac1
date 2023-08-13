@@ -29,7 +29,7 @@ get_pin:
   mov eax, 4 ; sys_write
   mov ebx, 1 ; stdout
   mov ecx, prompt ;buffer
-  mov edx, promptLength ;buffer length
+  mov edx, 21 ;buffer length
   int 0x80
 ; Read the pin from stdin and store it in a buffer
   mov eax, 3
@@ -60,9 +60,8 @@ done:
   ;mov eax, 1
   ;xor ebx, ebx
   ;int 0x80
-  mov eax, 1
-  xor ebx, ebx
-  int 0x80
+  ;xor ebx, ebx
+  
 ; ==========================
 ; Do not modify anything below this line unless you know what you are doing
   leave
