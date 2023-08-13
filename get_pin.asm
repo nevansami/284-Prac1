@@ -6,7 +6,7 @@ section .data
 ; ==========================
 ; Your data goes here
 
-  prompt db "Enter 4-digit PIN: ", 0
+  prompt db "Enter 4-digit PIN: "
   promptLength equ $ - prompt
 
 section .bss
