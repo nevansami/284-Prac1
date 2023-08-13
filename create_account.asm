@@ -56,24 +56,81 @@ create_account:
   call calculate_balance
 
   ; Convert the balance to ascii and store it in the balance pointer
-  
+
+    mov rsi, rdx ; balance = rsi
+    mov rdi, [bal_ptr] ; bal pointer = rdi
+    call int_to_ascii
+
   ; Convert the pin to ascii and store it in the pin pointer
+    mov rsi, [pin_val] ; pin = rsi
+    mov rdi, [pin_ptr] ; pin pointer = rdi
+    call int_to_ascii
 
   ; Convert the account number to ascii and store it in the account number pointer
+    mov rsi, [acc_num_val] ; acc_num_val = rsi
+    mov rdi, [pin_ptr] ; pin pointer = rdi
+    call int_to_ascii
 
   ; Output account message
+    mov rdi, acc_msg
+    call print_string
 
   ; Output account number
+    mov rsi, [acc_ptr]
+    call print_string
 
   ; Output balance message
+    mov rdi bal_msg
+    call print_string
 
   ; Output balance
+  mov rsi, [bal_ptr]
+  call print_string
 
   ; Obsfucate the pin
+  mov rdi, [pin_ptr]
+  call obscure_pin
 
   ; Output pin message
+  mov rdi, pin_msg
+  call print_string
 
   ; Output obscured pin
+  mov rsi, [pin_ptr]
+  call print_string
 
   leave
+  ret
+
+; Integer to ASCII
+; rsi: pointer to ASCII string, rdi: pointer to store the result
+int_to_ascii:
+  xor rcx, rcx         ; Clear the accumulator (rcx)
+  xor rax, rax         ; Clear rax to store the result
+.loop:
+  movzx rdx, byte [rsi + rcx] ; Load the current ASCII character
+  sub rdx, 48           ; Convert ASCII to numerical value
+  imul rax, rax, 10    ; Multiply the result by 10
+  add rax, rdx          ; Add the current digit to the result
+  inc rcx               ; Move to the next character
+  cmp byte [rsi + rcx], 0 ; Check if end of string
+  jnz .loop             ; If not, repeat the loop
+  mov [rdi], rax        ; Store the result in rdi
+  ret
+
+; Print null-terminated string pointed by rdi
+print_string:
+  xor rax, rax          ; Clear rax
+.print_loop:
+  mov al, byte [rdi]    ; Load the current character
+  test al, al           ; Test if it's the null terminator
+  jz .print_done         ; If yes, exit the loop
+  mov rax, 1            ; sys_write syscall number
+  mov rdi, 1            ; File descriptor (stdout)
+  mov rsi, rdi          ; Load the current character to rsi
+  mov rdx, 1            ; Number of bytes to write
+  syscall               ; Make the syscall
+  inc rdi               ; Move to the next character
+  jmp .print_loop        ; Repeat the loop
+.print_done:
   ret

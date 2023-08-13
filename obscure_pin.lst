@@ -24,7 +24,7 @@
     24                                 
     25                                 
     26                                 
-    27 00000004 BB00000000              mov ebx, 0
+    27 00000004 BB03000000              mov ebx, 3
     28 00000009 31C0                    xor eax, eax
     29 0000000B 48893C25[00000000]      mov [pin], rdi
     30 00000013 BE[00000000]            mov esi, pin
@@ -39,7 +39,7 @@
     39 00000027 83C130                  add ecx, 48
     40 0000002A 67898B[00000000]        mov [obscured + ebx], ecx
     41 00000031 B8[00000000]            mov eax, obscured
-    42 00000036 FFC3                    inc ebx
+    42 00000036 FFCB                    dec ebx
     43 00000038 FFC6                    inc esi
     44 0000003A EBDA                    jmp iterate
     45                                 

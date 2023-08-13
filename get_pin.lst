@@ -7,9 +7,9 @@
      7                                 
      8                                 
      9                                 
-    10 00000000 456E74657220342D64-     prompt db "Enter 4-digit PIN: ", 0
+    10 00000000 456E74657220342D64-     prompt db "Enter 4-digit PIN: "
     11 00000000 696769742050494E3A-
-    12 00000000 2000               
+    12 00000000 20                 
     13                                  promptLength equ $ - prompt
     14                                 
     15                                 [section .bss]
@@ -32,7 +32,7 @@
     32 00000004 B804000000              mov eax, 4
     33 00000009 BB01000000              mov ebx, 1
     34 0000000E B9[00000000]            mov ecx, prompt
-    35 00000013 BA14000000              mov edx, promptLength
+    35 00000013 BA15000000              mov edx, 21
     36 00000018 CD80                    int 0x80
     37                                 
     38 0000001A B803000000              mov eax, 3

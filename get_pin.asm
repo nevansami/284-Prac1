@@ -6,7 +6,7 @@ section .data
 ; ==========================
 ; Your data goes here
 
-  prompt db "Enter 4-digit PIN: ", 0
+  prompt db "Enter 4-digit PIN: "
   promptLength equ $ - prompt
 
 section .bss
@@ -33,9 +33,9 @@ get_pin:
   int 0x80
 ; Read the pin from stdin and store it in a buffer
   mov eax, 3
-  mov ebx, 0
+  mov ebx, 0 ;stdin
   mov ecx, input
-  mov edx, 100
+  mov edx, 5
   int 0x80
   xor eax, eax
 ;print the value in 
@@ -55,13 +55,14 @@ string_to_int:
 ; Store the integer in eax
   ;mov eax, 0 ; This can be deleted, it just keeps function from causing a runtime error until completed
 done:
+  pop rbp
   ;mov [input], eax
   ;mov rax, [input]
   ;mov eax, 1
   ;xor ebx, ebx
   ;int 0x80
   ;xor ebx, ebx
-  
+
 ; ==========================
 ; Do not modify anything below this line unless you know what you are doing
   leave
