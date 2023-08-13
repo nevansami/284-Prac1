@@ -18,9 +18,9 @@ calculate_account:
 ; Do not modify anything above this line unless you know what you are doing
 ; ==========================
 ; Your code goes here
-  xor rax, rax
-  mov edx, 6468 ;pretend as if this is the pin from user
-  mov eax, edx ; load 32bit integer pin
+  ;xor rax, rax
+  ;mov edx, 6468 ;pretend as if this is the pin from user
+  ;mov eax, edx ; load 32bit integer pin
   add rax, 10000 ; adding 10000 to pin for acc number
 
   ;mov eax, 1
